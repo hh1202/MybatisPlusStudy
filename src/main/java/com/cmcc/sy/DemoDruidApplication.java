@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("com.yuan.demodruid.mapper")
+@MapperScan("com.cmcc.sy.mapper")
 public class DemoDruidApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoDruidApplication.class, args);

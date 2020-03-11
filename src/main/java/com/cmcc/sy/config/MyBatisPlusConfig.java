@@ -2,13 +2,16 @@ package com.cmcc.sy.config;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
+import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.logging.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.logging.Logger;
 
@@ -19,6 +22,7 @@ import java.util.logging.Logger;
  */
 @Slf4j
 @Configuration
+@EnableTransactionManagement
 public class MyBatisPlusConfig {
 
     /**
@@ -61,5 +65,16 @@ public class MyBatisPlusConfig {
         return new LogicSqlInjector();
     }
 
+
+    /**
+     * @Author：huanghao on 2020/3/10 17:23
+     * @param: []
+     * @return: com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor
+     * @Despriction: 乐观锁插件配置
+     */
+    @Bean
+    public OptimisticLockerInterceptor optimisticLockerInterceptor() {
+        return new OptimisticLockerInterceptor();
+    }
 }
 
